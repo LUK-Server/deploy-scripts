@@ -12,9 +12,17 @@ git submodule add https://github.com/LUK-Server/deploy-scripts.git scripts/vendo
 
 Each service keeps:
 
-- `scripts/pre-deploy.sh` — initializes submodule, calls `fetch-secrets.sh`
+- `scripts/pre-deploy.sh` — initializes submodule, calls `fetch-secrets.sh` with `SECRET=filename` pairs
 - `scripts/infisical-compose-wrapper.sh` — initializes submodule, calls `compose-wrapper.sh`
-- `scripts/infisical-secrets.map` — which secrets to fetch and output filenames
+
+Example pre-deploy excerpt:
+
+```sh
+exec sh "$VENDOR/fetch-secrets.sh" \
+  SERVER_CERT=server.crt \
+  SERVER_KEY=server.key \
+  DB_CA_CERT=ca.crt
+```
 
 ## Komodo
 
