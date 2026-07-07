@@ -30,7 +30,9 @@ exec sh "$VENDOR/fetch-secrets.sh" \
 - **Compose wrapper:** `./scripts/infisical-compose-wrapper.sh [[COMPOSE_COMMAND]]` (include `up` only)
 - **Stack environment:** Machine Identity creds, `INFISICAL_PROJECT_ID`, `INFISICAL_API_URL=http://infisical:8080`
 
-Komodo must clone with submodules on pull (enable recursive submodule update if available).
+Komodo must clone with submodules on pull (enable recursive submodule update if available). Pre-deploy also runs `git submodule update --init` as a fallback.
+
+If the submodule repo is private, use a deploy key + SSH URL in `.gitmodules`, make the repo public (scripts contain no secrets), or configure git credentials on Periphery.
 
 ## Releases
 
